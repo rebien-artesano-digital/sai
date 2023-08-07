@@ -1,0 +1,96 @@
+{
+    "name": "carevalo/sai",
+    "type": "library",
+    "description": "SAI (Sistema de Asistencia Inteligente) es una librería de PHP que permite crear asistentes virtuales basados en ChatGPT para aplicativos SAS. Con SAI, podrás controlar las funciones del aplicativo SAS mediante lenguaje natural, permitiendo a los usuarios realizar tareas complejas de manera más eficiente. SAI está diseñada para ser fácil de integrar en cualquier aplicativo SAS y cuenta con una lista configurable de palabras no permitidas para evitar usos inapropiados del asistente virtual. Además, SAI utiliza la inteligencia artificial de ChatGPT para mejorar la capacidad del asistente virtual para entender y responder preguntas de los usuarios de manera efectiva.",
+    "keywords": [
+        "chatbot",
+        "inteligencia artificial",
+        "lenguaje natural",
+        "asistente virtual",
+        "automatización",
+        "aplicaciones SAS",
+        "interfaz de usuario",
+        "desarrollo de software",
+        "biblioteca de funciones",
+        "Laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carlos Andres Arevalo Cortes",
+            "email": "carevalo2205@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "vlucas/phpdotenv": "^5.3"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Assistent\\": "app/Assistent",
+            "Sidevtech\\Sai\\Src\\": "src/",
+            "Sidevtech\\Sai\\Src\\Assistent\\": "src/assistent/",
+            "Sidevtech\\Sai\\Src\\Providers\\": "src/providers/",
+            "Sidevtech\\Sai\\Src\\Facades\\": "src/facades/",
+            "Sidevtech\\Directives\\": "app/Directives/",
+            "Sidevtech\\Sai\\Src\\Console\\Commands\\": "src/commands/",
+            "Sidevtech\\Sai\\Src\\Helpers\\": "src/helpers/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+        "allow-override": {
+            "sidevtech/sai": "dev-develop"
+        },
+        "laravel": {
+            "providers": [
+                "Sidevtech\\Sai\\Src\\Providers\\AssistentServiceProvider"
+            ],
+            "aliases": {
+                "Sai": "Sidevtech\\Sai\\Src\\Facades\\Sai"
+            },
+            "allow-overrides": {
+                "sidevtech/sai": "dev-develop"
+            },
+            "publish": {
+                "config": [
+                    {
+                        "source": "config/Sai.php",
+                        "destination": "sai.php"
+                    }
+                ],
+                "controllers": [
+                    {
+                        "source": "app/Http/Controllers/SaiController.php",
+                        "destination": "app/Http/Controllers/SaiController.php"
+                    }
+                ],
+                "views": [
+                    {
+                        "source": "resources/views",
+                        "destination": "resources/views"
+                    }
+                ],
+                "directives": [
+                    {
+                        "source": "app/Directives",
+                        "destination": "app/Directives"
+                    }
+                ],
+                "routes": [
+                    {
+                        "source": "src/routes/web.php",
+                        "destination": "routes/web.php"
+                    }
+                ]
+
+            }
+        }
+
+        
+    },
+    "version": "2.3.0"
+
+}
