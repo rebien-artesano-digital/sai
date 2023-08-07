@@ -35,14 +35,16 @@
             "Assistent\\Sai\\Src\\Facades\\": "src/facades/",
             "Assistent\\Directives\\": "app/Directives/",
             "Assistent\\Sai\\Src\\Console\\Commands\\": "src/commands/",
-            "Assistent\\Sai\\Src\\Helpers\\": "src/helpers/"
+            "Assistent\\Sai\\Src\\Helpers\\": "src/helpers/",
+            "Assistent\\Sai\\Src\\Helpers\\Pattern\\Methods\\": "src/helpers/pattern/methods/",
+            "Assistent\\Sai\\Src\\Helpers\\Pattern\\Implementations\\": "src/helpers/pattern/Implementations/"
         }
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "extra": {
         "allow-override": {
-            "sidevtech/sai": "dev"
+            "assistent/sai": "dev"
         },
         "laravel": {
             "providers": [
@@ -52,7 +54,7 @@
                 "Sai": "Assistent\\Sai\\Src\\Facades\\Sai"
             },
             "allow-overrides": {
-                "sidevtech/sai": "dev-develop"
+                "assistent/sai": "dev-develop"
             },
             "publish": {
                 "config": [
@@ -72,19 +74,12 @@
                         "source": "app/Directives",
                         "destination": "app/Directives"
                     }
-                ],
-                "routes": [
-                    {
-                        "source": "src/routes/web.php",
-                        "destination": "routes/web.php"
-                    }
                 ]
-
             }
         }
 
-        
+
     },
-    "version": "1.3.0"
+    "version": "1.4.0"
 
 }
