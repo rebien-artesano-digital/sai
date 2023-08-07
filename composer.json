@@ -1,5 +1,5 @@
 {
-    "name": "carevalo/sai",
+    "name": "assistent/sai",
     "type": "library",
     "description": "SAI (Sistema de Asistencia Inteligente) es una librería de PHP que permite crear asistentes virtuales basados en ChatGPT para aplicativos SAS. Con SAI, podrás controlar las funciones del aplicativo SAS mediante lenguaje natural, permitiendo a los usuarios realizar tareas complejas de manera más eficiente. SAI está diseñada para ser fácil de integrar en cualquier aplicativo SAS y cuenta con una lista configurable de palabras no permitidas para evitar usos inapropiados del asistente virtual. Además, SAI utiliza la inteligencia artificial de ChatGPT para mejorar la capacidad del asistente virtual para entender y responder preguntas de los usuarios de manera efectiva.",
     "keywords": [
