@@ -37,7 +37,8 @@
             "Assistent\\Sai\\Src\\Console\\Commands\\": "src/commands/",
             "Assistent\\Sai\\Src\\Helpers\\": "src/helpers/",
             "Assistent\\Sai\\Src\\Helpers\\Pattern\\Methods\\": "src/helpers/pattern/methods/",
-            "Assistent\\Sai\\Src\\Helpers\\Pattern\\Implementations\\": "src/helpers/pattern/Implementations/"
+            "Assistent\\Sai\\Src\\Helpers\\Pattern\\Implementations\\": "src/helpers/pattern/implementations/",
+            "Assistent\\Sai\\Src\\Helpers\\Pattern\\": "src/helpers/pattern/"
         }
     },
     "minimum-stability": "stable",
@@ -80,6 +81,6 @@
 
 
     },
-    "version": "1.4.0"
+    "version": "1.5.0"
 
 }
