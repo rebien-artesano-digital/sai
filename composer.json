@@ -28,14 +28,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Assistent\\": "app/Assistent",
-            "Sidevtech\\Sai\\Src\\": "src/",
-            "Sidevtech\\Sai\\Src\\Assistent\\": "src/assistent/",
-            "Sidevtech\\Sai\\Src\\Providers\\": "src/providers/",
-            "Sidevtech\\Sai\\Src\\Facades\\": "src/facades/",
-            "Sidevtech\\Directives\\": "app/Directives/",
-            "Sidevtech\\Sai\\Src\\Console\\Commands\\": "src/commands/",
-            "Sidevtech\\Sai\\Src\\Helpers\\": "src/helpers/"
+            "App\\Principles\\": "app/Principles",
+            "Assistent\\Sai\\Src\\": "src/",
+            "Assistent\\Sai\\Src\\Principles\\": "src/principles/",
+            "Assistent\\Sai\\Src\\Providers\\": "src/providers/",
+            "Assistent\\Sai\\Src\\Facades\\": "src/facades/",
+            "Assistent\\Directives\\": "app/Directives/",
+            "Assistent\\Sai\\Src\\Console\\Commands\\": "src/commands/",
+            "Assistent\\Sai\\Src\\Helpers\\": "src/helpers/"
         }
     },
     "minimum-stability": "stable",
@@ -46,10 +46,10 @@
         },
         "laravel": {
             "providers": [
-                "Sidevtech\\Sai\\Src\\Providers\\AssistentServiceProvider"
+                "Assistent\\Sai\\Src\\Providers\\AssistentServiceProvider"
             ],
             "aliases": {
-                "Sai": "Sidevtech\\Sai\\Src\\Facades\\Sai"
+                "Sai": "Assistent\\Sai\\Src\\Facades\\Sai"
             },
             "allow-overrides": {
                 "sidevtech/sai": "dev-develop"
@@ -65,12 +65,6 @@
                     {
                         "source": "app/Http/Controllers/SaiController.php",
                         "destination": "app/Http/Controllers/SaiController.php"
-                    }
-                ],
-                "views": [
-                    {
-                        "source": "resources/views",
-                        "destination": "resources/views"
                     }
                 ],
                 "directives": [
@@ -91,6 +85,6 @@
 
         
     },
-    "version": "1.2.0"
+    "version": "1.3.0"
 
 }
