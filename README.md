@@ -10,18 +10,9 @@ To install SAI, simply add the following code line to your composer.json:
 
 Set up the access token (request it from the library manager).
 
-```
-composer config --global github-oauth.github.com <TOKEN>
-```
 
-```json
-"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/charlie210012/sai.git"
-        }
-    ],
-```
+
+br
 
 After that, run the command `composer require sidevtech/sai` in your project.
 
@@ -61,18 +52,8 @@ Para instalar SAI, simplemente agrega la siguiente línea de código en tu archi
 
 configura el token de acceso (solicitalo a manager de la libreria)
 
-```
-composer config --global github-oauth.github.com <TOKEN>
-
-```
-
 ```json
-"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/charlie210012/sai.git"
-        }
-    ],
+composer require sidevtech/sai
 ```
 
 Después de eso, ejecuta el comando composer require sidevtech/sai en tu proyecto.

@@ -15,30 +15,21 @@ class Sai
     private $wordsBlocks = [];
     private $apiKey = '';
 
-    private $bussinesName = '';
+    private $model;
 
-    private $phone = '';
-
-    private $web = '';
-
-    private $email = '';
-
+    private $max_token;
     private $principles = [];
-
-    private $responseMethod;
 
     private $client;
 
-    public function __construct($config, $apiKey = null,$bussinesName = null,$phone = null,$web = null,$email = null)
+    public function __construct($config, $apiKey = null,$model,$max_token)
     {
 
         $this->wordsBlocks = $config['wordsBlocks'];
         $this->principles = new Principles();
         $this->apiKey = $apiKey;
-        $this->bussinesName = $bussinesName;
-        $this->phone = $phone;
-        $this->web = $web;
-        $this->email = $email;
+        $this->model = $model;
+        $this->max_token = $max_token;
 
         $this->client = new Client([
             'base_uri' => 'https://api.openai.com',
@@ -64,8 +55,8 @@ class Sai
 
 
                 $data = [
-                    'max_tokens' => 200,
-                    'model' => 'gpt-3.5-turbo',
+                    'max_tokens' => $this->max_token,
+                    'model' => $this->model,
                 ];
 
                 $data['messages'] = array_merge(
@@ -130,8 +121,8 @@ class Sai
                     'content' => $input,
                 ]
             ],
-            'max_tokens' => 200,
-            'model' => 'gpt-3.5-turbo',
+            'max_tokens' => $this->max_token,
+            'model' => $this->model,
         ];
         return $this->requestChatGpt($data);
     }

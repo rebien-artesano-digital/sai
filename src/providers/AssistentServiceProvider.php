@@ -22,8 +22,8 @@ class AssistentServiceProvider extends ServiceProvider
             __DIR__.'/../../app/Directives/Methods'=> app_path('Directives/Methods'),
             __DIR__.'/../../app/Directives/Helpers'=> app_path('Directives/Helpers'),
             __DIR__.'/../storage/images'=> storage_path('app/public/images'),
-            __DIR__.'/../../app/Assistent'=> app_path('Assistent'),
-        ], ['sai-config', 'sai-controllers','sai-methods','sai-helpers', 'sai-images', 'sai-assistent']);
+            __DIR__.'/../../app/Principles'=> app_path('Principles'),
+        ], ['sai-config', 'sai-controllers','sai-methods','sai-helpers', 'sai-images', 'sai-principles']);
 
 
         // Ejecuta el comando vendor:publish automáticamente
@@ -31,7 +31,6 @@ class AssistentServiceProvider extends ServiceProvider
             SaiInstall::class,
         ]);
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/sai.php');
     }
 
 
