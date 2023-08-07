@@ -1,6 +1,6 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Facades;
+namespace Assistent\Sai\Src\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

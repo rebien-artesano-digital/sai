@@ -1,6 +1,6 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Assistent;
+namespace Assistent\Sai\Src\Principles;
 
 abstract class Principles {
     protected $default = [

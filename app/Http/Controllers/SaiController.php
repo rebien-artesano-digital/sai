@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use Sidevtech\Sai\Src\Sai;
+use Assistent\Sai\Src\Sai;
 
 class SaiController extends Controller
 {

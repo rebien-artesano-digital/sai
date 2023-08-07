@@ -1,8 +1,8 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Helpers\Pattern;
+namespace Assistent\Sai\Src\Helpers\Pattern;
 
-use Sidevtech\Sai\Src\Helpers\Pattern\Implementations\SaiPattern;
+use Assistent\Sai\Src\Helpers\Pattern\Implementations\SaiPattern;
 
 class ResponseHelpers
 {

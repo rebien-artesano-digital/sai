@@ -1,11 +1,11 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Helpers;
+namespace Assistent\Sai\Src\Helpers;
 
 include(__DIR__.'/pattern/ResponseHelpers.php');
 include(__DIR__.'/pattern/Methods/HelperBase.php');
 
-use Sidevtech\Sai\Src\Helpers\Pattern\ResponseHelpers;
+use Assistent\Sai\Src\Helpers\Pattern\ResponseHelpers;
 
 class SaiHelpers
 {
@@ -19,7 +19,7 @@ class SaiHelpers
 
     public function call(String $input)
     {
-        $instancie = '\\Sidevtech\\Sai\\Src\\Helpers\\Pattern\\Methods\\'.$this->type;
+        $instancie = '\\Assistent\\Sai\\Src\\Helpers\\Pattern\\Methods\\'.$this->type;
 
 
         if (!class_exists($instancie)) {

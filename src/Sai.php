@@ -1,14 +1,14 @@
 <?php
 
-namespace Sidevtech\Sai\src;
+namespace Assistent\Sai\src;
 
-include_once __DIR__.'/../../../../app/Assistent/Principles.php';
+include_once __DIR__.'/../../../../app/Principles/Principles.php';
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Assistent\Principles;
-use Sidevtech\Directives\ResponseMethods;
+use App\Principles\Principles;
+use Assistent\Directives\ResponseMethods;
 
 class Sai
 {

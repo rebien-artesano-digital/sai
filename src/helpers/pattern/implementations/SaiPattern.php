@@ -1,6 +1,6 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Helpers\Pattern\Implementations;
+namespace Assistent\Sai\Src\Helpers\Pattern\Implementations;
 
 
 interface SaiPattern

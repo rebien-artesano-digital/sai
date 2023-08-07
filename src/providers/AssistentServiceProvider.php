@@ -1,10 +1,10 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Providers;
+namespace Assistent\Sai\Src\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
-use Sidevtech\Sai\Src\Console\Commands\SaiInstall;
+use Assistent\Sai\Src\Console\Commands\SaiInstall;
 
 class AssistentServiceProvider extends ServiceProvider
 {
@@ -44,7 +44,7 @@ class AssistentServiceProvider extends ServiceProvider
     {
         // Registra el facade del asistente virtual
         $this->app->bind('sai', function () {
-            return new \Sidevtech\Sai\Sai(config('sai'));
+            return new \Assistent\Sai\Sai(config('sai'));
         });
 
     }

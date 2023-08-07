@@ -1,8 +1,8 @@
 <?php
 
-namespace Sidevtech\Directives;
+namespace Assistent\Directives;
 
-use Sidevtech\Directives\Implementations\DirectivesAnswers;
+use Assistent\Directives\Implementations\DirectivesAnswers;
 
 class ResponseMethods
 {

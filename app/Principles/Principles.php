@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Assistent;
+namespace App\Principles;
 
 use App\Models\User;
-use Sidevtech\Sai\Src\Assistent\Principles as SaiPrinciples;
+use Assistent\Sai\Src\Principles\Principles as SaiPrinciples;
 
 class Principles extends SaiPrinciples {
     public function __invoke()

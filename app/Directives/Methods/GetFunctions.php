@@ -2,7 +2,7 @@
 
 namespace App\Directives\Methods;
 
-use Sidevtech\Directives\Implementations\DirectivesAnswers;
+use Assistent\Directives\Implementations\DirectivesAnswers;
 
 class GetFunctions implements DirectivesAnswers
 {

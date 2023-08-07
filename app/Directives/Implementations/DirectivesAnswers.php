@@ -1,6 +1,6 @@
 <?php
 
-namespace Sidevtech\Directives\Implementations;
+namespace Assistent\Directives\Implementations;
 
 
 interface DirectivesAnswers

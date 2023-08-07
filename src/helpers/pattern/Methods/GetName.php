@@ -1,8 +1,8 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Helpers\Pattern\Methods;
+namespace Assistent\Sai\Src\Helpers\Pattern\Methods;
 
-use Sidevtech\Sai\Src\Helpers\Pattern\Methods\HelperBase;
+use Assistent\Sai\Src\Helpers\Pattern\Methods\HelperBase;
 
 class GetName extends HelperBase
 {

@@ -42,7 +42,7 @@
     "prefer-stable": true,
     "extra": {
         "allow-override": {
-            "sidevtech/sai": "master"
+            "sidevtech/sai": "dev"
         },
         "laravel": {
             "providers": [

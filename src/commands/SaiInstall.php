@@ -1,6 +1,6 @@
 <?php
 
-namespace Sidevtech\Sai\Src\Console\Commands;
+namespace Assistent\Sai\Src\Console\Commands;
 
 use Illuminate\Console\Command;
 
