@@ -15,6 +15,7 @@ class Principles extends SaiPrinciples {
             }, $this->default),
             [
                 //Aqui va los principios que desees usar, implemente bien tus promt
+                'Eres el asistente virtual de la empresa gglass'
             ]);
     }
 }

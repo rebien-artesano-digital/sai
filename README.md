@@ -1,20 +1,12 @@
 English
 
-SAI (Sistema de Asistencia Inteligente)
+SAI (Intelligent Assistance System)
 
-SAI is a PHP library that allows you to create virtual assistants based on ChatGPT for SaaS applications. With SAI, you can control the functions of the SaaS application through natural language, allowing users to perform complex tasks more efficiently.
+SAI is a PHP library that allows you to create virtual assistants based on ChatGPT for SaaS applications. With SAI, you can control the functions of the SAS application through natural language, enabling users to perform complex tasks more efficiently.
 
 Installation
 
-To install SAI, simply add the following code line to your composer.json:
-
-Set up the access token (request it from the library manager).
-
-
-
-br
-
-After that, run the command `composer require assistent/sai` in your project.
+To install SAI, run the command `composer require assistent/sai` in your project.
 
 Once the library is installed, run the following command:
 
@@ -34,15 +26,87 @@ OPENAI_MAX_TOKEN = 200
 
 With that, everything will be ready, and an automatic chat will be created, which will have integrated ChatGPT and the additional functionalities you wish to create.
 
+
+**Principles**
+
+In the file `app/Principles/Principles.php`, you can add all the prompts you need for the service to recognize.
+
+```
+class Principles extends SaiPrinciples {
+    public function __invoke()
+    {
+    
+        return array_merge(
+            array_map(function ($principle) {
+                return $principle;
+            }, $this->default),
+            [
+                //Add the principles you want to use, implement your prompts correctly
+                'You are the virtual assistant of the company gglass'
+            ]);
+    }
+}
+
+```
+
+
+
+**Directives**
+
+Define the method you want to call and an array with possible messages that the user could use to call that function.
+
+In `app/config/sai.php`:
+
+```
+"methods"=> [
+        [
+            "method"=> "GetFunctions",
+            "messages"=>[
+                "What functionalities do you have?",
+                "Show me what you can do",
+                "Show me your functionalities",
+                "Tell me what you can do",
+                "What functionalities do you have programmed?"
+            ]
+        ]
+    ]
+
+```
+
+Then create the directive in `app/Directive/Methods`:
+
+```
+<?php
+
+namespace App\Directives\Methods;
+
+use Assistent\Directives\Implementations\DirectivesAnswers;
+
+class GetFunctions implements DirectivesAnswers
+{
+    public function outPut($input)
+    {
+        return [
+            "message" =>[
+            "1. You can ask me about your data, your name, your identification, your email, or your creation date - status: Finished",
+            "2. Update user password - status: In development",
+            "3. Update user email - status: In development",
+            ]
+        ];
+    }
+}
+
+```
+
 Description
 
-SAI is a powerful tool for creating virtual assistants that can understand natural language and perform complex tasks in SaaS applications. With its easy installation process and flexible configuration options, SAI allows developers to create intelligent and efficient chatbots that can enhance the user experience.
+SAI is a powerful tool for creating virtual assistants that can understand natural language and perform complex tasks in SaaS applications. With its simple installation process and flexible configuration options, SAI enables developers to create intelligent and efficient chatbots that can enhance the user experience.
 
-The installation process for SAI is straightforward and can be done in just a few steps. Once installed, developers can configure the library to work with their specific SaaS application and customize its functionality as needed.
+The installation process of SAI is straightforward and can be completed in just a few steps. Once installed, developers can configure the library to work with their specific SaaS application and customize its functionality as needed.
 
-SAI is based on ChatGPT, which is a state-of-the-art natural language processing tool that enables virtual assistants to understand and respond to user requests. With SAI, developers can harness the power of ChatGPT to create virtual assistants that can interact with users in a natural and intuitive way.
+SAI is built on ChatGPT, which is a state-of-the-art natural language processing tool that allows virtual assistants to understand and respond to user requests. With SAI, developers can harness the power of ChatGPT to create virtual assistants that can interact with users in a natural and intuitive way.
 
-Overall, SAI is an excellent tool for developers who want to create virtual assistants for SaaS applications quickly and easily. Its powerful functionality and ease of use make it an ideal choice for any project that requires intelligent and efficient chatbots.
+Overall, SAI is an excellent tool for developers looking to create virtual assistants for their applications. Its powerful functionality and ease of use make it an ideal choice for any project that requires intelligent and efficient chatbots.
 
 Español
 
@@ -52,15 +116,11 @@ SAI es una librería de PHP que te permite crear asistentes virtuales basados en
 
 Instalación
 
-Para instalar SAI, simplemente agrega la siguiente línea de código en tu archivo composer.json:
-
-configura el token de acceso (solicitalo a manager de la libreria)
+Para instalar SAI, ejecuta el comando composer require assistent/sai en tu proyecto.
 
 ```json
 composer require assistent/sai
 ```
-
-Después de eso, ejecuta el comando composer require assistent/sai en tu proyecto.
 
 Una vez instalada la librería, ejecuta el siguiente comando:
 
@@ -82,6 +142,72 @@ OPENAI_MAX_TOKEN = 200
 
 Con eso, todo estará listo, y se creará automáticamente un chat que tendrá integrado ChatGPT y las funcionalidades adicionales que desees crear.
 
+**Principios**
+
+en el archivo, app/Principles/Principles.php, pueden añadir todos los prompt que necesites para que el servicios los reconozca.
+
+```
+class Principles extends SaiPrinciples {
+    public function __invoke()
+    {
+      
+        return array_merge(
+            array_map(function ($principle) {
+                return $principle;
+            }, $this->default),
+            [
+                //Aqui va los principios que desees usar, implemente bien tus promt
+                'Eres el asistente virtual de la empresa gglass'
+            ]);
+    }
+}
+```
+
+**Directivas**
+
+define el metodo que deseas llamar, y un array con los posibles mensajes que podria utilizar el usuario para llamar a esa función.
+
+app/config/sai.php
+
+```
+"methods"=> [
+        [
+            "method"=> "GetFunctions",
+            "mensajes"=>[
+                "Que funcionalidades tienes?",
+                "muestrame que puedes hacer",
+                "muestrame tus funcionalidades",
+                "dime que peudes hacer",
+                "que funcionalidades tienes programadas?"
+            ]
+        ]
+    ]
+```
+
+Luego crea la directiva en app/Directive/Methods
+
+```
+<?php
+
+namespace App\Directives\Methods;
+
+use Assistent\Directives\Implementations\DirectivesAnswers;
+
+class GetFunctions implements DirectivesAnswers
+{
+    public function outPut($input)
+    {
+        return [
+            "message" =>[
+            "1. puedes preguntarme por tus datos, tu nombre, tu identificación, tu email, o tu fecha de creación - estado:Terminada",
+            "2. Actualizar contreña de usuario - estado: En desarrollo",
+            "3. Actualizar email de usuario - estado: En desarrollo",
+            ]
+        ];
+    }
+}
+```
+
 Descripción
 
 SAI es una herramienta potente para crear asistentes virtuales que pueden entender el lenguaje natural y realizar tareas complejas en aplicaciones SaaS. Con su proceso de instalación sencillo y sus opciones de configuración flexibles, SAI permite a los desarrolladores crear chatbots inteligentes y eficientes que pueden mejorar la experiencia del usuario.
@@ -90,4 +216,4 @@ El proceso de instalación de SAI es sencillo y puede realizarse en solo unos po
 
 SAI se basa en ChatGPT, que es una herramienta de procesamiento de lenguaje natural de última generación que permite a los asistentes virtuales entender y responder a las solicitudes de los usuarios. Con SAI, los desarrolladores pueden aprovechar el poder de ChatGPT para crear asistentes virtuales que puedan interactuar con los usuarios de manera natural e intuitiva.
 
-En general, SAI es una excelente herramienta para los desarrolladores que desean crear asistentes virtuales para aplicaciones SaaS de manera rápida y sencilla. Su funcionalidad potente y facilidad de uso lo convierten en una opción ideal para cualquier proyecto que requiera chatbots inteligentes y eficientes.
+En general, SAI es una excelente herramienta para los desarrolladores que desean crear asistentes virtuales para sus aplicaciones. Su funcionalidad potente y facilidad de uso lo convierten en una opción ideal para cualquier proyecto que requiera chatbots inteligentes y eficientes.
