@@ -13,7 +13,7 @@ class SaiInstall extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag' => ['sai-config', 'sai-controllers', 'sai-methods','sai-helpers','sai-images','sai-principles'],
+            '--tag' => ['sai-config', 'sai-services', 'sai-methods','sai-helpers','sai-images','sai-principles'],
             '--force' => true,
         ]);
 

@@ -44,7 +44,7 @@ return [
         'extremismo',
     ],
     "auth" => false,
-    "sensitivity" => 40,
+    "sensitivity" => 75,
     "methods"=> [
         [
             "method"=> "GetFunctions",

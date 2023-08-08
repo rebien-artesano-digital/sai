@@ -55,7 +55,7 @@ class Sai
 
 
                 $data = [
-                    'max_tokens' => $this->max_token,
+                    'max_tokens' =>  intval($this->max_token),
                     'model' => $this->model,
                 ];
 
@@ -67,26 +67,6 @@ class Sai
                         ];
                     }, $this->principles->__invoke()),
                     [
-                        [
-                            'role' => 'system',
-                            'content' => 'Eres el asistente virtual de la plataforma '.$this->bussinesName,
-                        ],
-                        [
-                            'role' => 'system',
-                            'content' => 'Tu nombre es SIA',
-                        ],
-                        [
-                            'role' => 'system',
-                            'content' => 'El telefono de nuestra empresa es '.$this->phone,
-                        ],
-                        [
-                            'role' => 'system',
-                            'content' => isset($this->web) ? 'Nuestra pagina web es '.$this->web : 'No tenemos pagina web',
-                        ],
-                        [
-                            'role' => 'system',
-                            'content' => isset($this->email) ? 'Email de contacto '.$this->email : 'No tenemos email de contacto',
-                        ],
                         [
                             'role' => 'user',
                             'content' => "Soy el usuario y mi rol es: cliente del chat",
@@ -121,7 +101,7 @@ class Sai
                     'content' => $input,
                 ]
             ],
-            'max_tokens' => $this->max_token,
+            'max_tokens' => intval($this->max_token),
             'model' => $this->model,
         ];
         return $this->requestChatGpt($data);
