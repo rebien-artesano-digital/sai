@@ -14,7 +14,7 @@ Set up the access token (request it from the library manager).
 
 br
 
-After that, run the command `composer require sidevtech/sai` in your project.
+After that, run the command `composer require assistent/sai` in your project.
 
 Once the library is installed, run the following command:
 
@@ -26,7 +26,11 @@ php artisan storage:link
 
 Remember to configure this variable in your .env file:
 
-`OPENAI_API_KEY = "your OpenAI key" BUSSINES_NAME = "Sidevtech" EMAIL = "admin@sidevtech.com" WEBSITE = "https://sidevtech.com" PHONE = "+6281234567890"`
+```
+OPENAI_API_KEY = "tu api key"
+OPENAI_MODEL = "gpt-3.5-turbo" //puedes poner cualquier modelo
+OPENAI_MAX_TOKEN = 200
+```
 
 With that, everything will be ready, and an automatic chat will be created, which will have integrated ChatGPT and the additional functionalities you wish to create.
 
@@ -53,10 +57,10 @@ Para instalar SAI, simplemente agrega la siguiente línea de código en tu archi
 configura el token de acceso (solicitalo a manager de la libreria)
 
 ```json
-composer require sidevtech/sai
+composer require assistent/sai
 ```
 
-Después de eso, ejecuta el comando composer require sidevtech/sai en tu proyecto.
+Después de eso, ejecuta el comando composer require assistent/sai en tu proyecto.
 
 Una vez instalada la librería, ejecuta el siguiente comando:
 
@@ -70,7 +74,11 @@ php artisan storage:link
 
 Recuerda configurar esta variable en tu archivo .env:
 
-OPENAI_API_KEY = "tu clave de OpenAI" BUSSINES_NAME = "Sidevtech" EMAIL = "admin@sidevtech.com" WEBSITE = "https://sidevtech.com" PHONE = "+6281234567890"
+```
+OPENAI_API_KEY = "tu api key"
+OPENAI_MODEL = "gpt-3.5-turbo" //puedes poner cualquier modelo
+OPENAI_MAX_TOKEN = 200
+```
 
 Con eso, todo estará listo, y se creará automáticamente un chat que tendrá integrado ChatGPT y las funcionalidades adicionales que desees crear.
 

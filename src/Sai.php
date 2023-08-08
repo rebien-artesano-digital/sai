@@ -127,8 +127,8 @@ class Sai
 
         $highestPercent = 0;
         $bestMethod = null;
-        $sensitivity = config('Sai.sensitivity');
-        $methods = config('Sai.methods');
+        $sensitivity = config('sai.sensitivity');
+        $methods = config('sai.methods');
 
         foreach($methods as $method){
             if(is_array($method['mensajes'])){
