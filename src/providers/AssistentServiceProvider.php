@@ -17,7 +17,7 @@ class AssistentServiceProvider extends ServiceProvider
     {
         // Publica los archivos de la librería automáticamente
         $this->publishes([
-            __DIR__.'/../../config/Sai.php' => config_path('Sai.php'),
+            __DIR__.'/../../config/sai.php' => config_path('sai.php'),
             __DIR__.'/../../app/Services/SaiServices.php' => app_path('Services/SaiServices.php'),
             __DIR__.'/../../app/Directives/Methods'=> app_path('Directives/Methods'),
             __DIR__.'/../../app/Directives/Helpers'=> app_path('Directives/Helpers'),

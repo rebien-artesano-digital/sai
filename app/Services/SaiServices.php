@@ -15,7 +15,7 @@ class SaiServices
 
     public function __construct(Request $request)
     {
-        $config = config('Sai');
+        $config = config('sai');
         $apikey = env('OPENAI_API_KEY');
         $model = env('OPENAI_MODEL');
         $max_token = env('OPENAI_MAX_TOKEN');
