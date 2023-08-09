@@ -13,14 +13,15 @@ class SaiInstall extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag' => ['sai-config', 'sai-services', 'sai-methods','sai-helpers','sai-images','sai-principles'],
+            '--tag' => ['sai-config', 'sai-services','sai-views-layouts','sai-views', 'sai-methods','sai-helpers','sai-images','sai-principles'],
             '--force' => true,
         ]);
 
         // Borra los archivos de la librería automáticamente
         $filesToDelete = [
             __DIR__.'/../../config/',
-            __DIR__.'/../../app/Http/',
+            __DIR__.'/../../app/Services/',
+            __DIR__.'/../../resources/',
             __DIR__.'/../../app/Directives/Methods/',
             __DIR__.'/../../app/Directives/Helpers/',
             __DIR__.'/../storage/images/',
