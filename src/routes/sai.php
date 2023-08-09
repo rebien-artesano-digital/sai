@@ -1,8 +1,10 @@
 <?php
 
+use App\Services\SaiServices;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-use App\Http\Controllers\SaiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +19,14 @@ use App\Http\Controllers\SaiController;
 
 
 if(config('Sai.auth')){
-    Route::get('/sai', [SaiController::class,'index'])->name('sai.index')->middleware('auth');
-    Route::get('/sai/history',[SaiController::class,'history'])->name('sai.history')->middleware('auth');
-    Route::post('/sai/send', [SaiController::class,'send'])->name('sai.send')->middleware('auth');
+    Route::post('/sai', function (Request $request) {
+        $saiServices = new SaiServices($request);
+        return $saiServices();
+    })->name('sai.send')->middleware('auth');
 }else{
-    Route::get('/sai', [SaiController::class,'index'])->name('sai.index');
-    Route::get('/sai/history',[SaiController::class,'history'])->name('sai.history');
-    Route::post('/sai/send', [SaiController::class,'send'])->name('sai.send');
+    Route::post('/sai', function (Request $request) {
+        $saiServices = new SaiServices($request);
+        return $saiServices();
+    })->name('sai.send');
 }
 
