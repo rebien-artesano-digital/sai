@@ -19,13 +19,12 @@ class AssistentServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../config/sai.php' => config_path('sai.php'),
             __DIR__.'/../../app/Services/SaiServices.php' => app_path('Services/SaiServices.php'),
-            __DIR__.'/../../resources/views/layouts/assistent.blade.php'=> resource_path('views/layouts/assistent.blade.php'),
             __DIR__.'/../../resources/views/assistent/assistent.blade.php'=> resource_path('views/assistent/assistent.blade.php'),
             __DIR__.'/../../app/Directives/Methods'=> app_path('Directives/Methods'),
             __DIR__.'/../../app/Directives/Helpers'=> app_path('Directives/Helpers'),
             __DIR__.'/../storage/images'=> storage_path('app/public/images'),
             __DIR__.'/../../app/Principles'=> app_path('Principles'),
-        ], ['sai-config', 'sai-services','sai-views-layouts','sai-views','sai-methods','sai-helpers', 'sai-images', 'sai-principles']);
+        ], ['sai-config', 'sai-services','sai-views','sai-methods','sai-helpers', 'sai-images', 'sai-principles']);
 
 
         // Ejecuta el comando vendor:publish automáticamente

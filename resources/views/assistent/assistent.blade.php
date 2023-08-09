@@ -1,5 +1,5 @@
-
 @section('styles')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style scoped>
     .floating-container {
       width: 80px;
@@ -203,7 +203,7 @@
           :class="{'chat-message-bot': message.sender === 'bot', 'chat-message-user': message.sender === 'user'}"
         >
           <img :src="message.sender == 'bot' ? imageSai : imageUser" alt="">
-          <p class="chat-message-text">{{ "Hola" }}</p>
+          <p class="chat-message-text">@{{ message.content }}</p>
         </div>
         <div class="chat-message" v-show="consult">
           <img :src="imageSai" alt="">
@@ -224,6 +224,9 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <script>
 
         const format = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false, timeZone: 'America/Bogota' };
@@ -238,8 +241,8 @@
                     countPrinciples:false,
                     principles:[],
                     messages: [],
-                    imageUser: '/assets/images/intellisai.svg',
-                    imageSai: '/assets/images/sai.png',
+                    imageUser: '/storage/images/intellisai.svg',
+                    imageSai: '/storage/images/sai.png',
                     containerStyle: {
                         position: 'fixed',
                         bottom: '20px',
@@ -295,17 +298,13 @@
                 },
                 sendServices(message){
                     this.consult = true;
-                    const urlBase = localStorage.getItem('urlBase');
-                    axios.post(urlBase + 'api/sai/send', {
+                    axios.post('/sai', {
                         message: message,
                         alarm: true,
                         component:this.component,
                         clientId: localStorage.getItem('clientId'),
-                    }, {headers: {
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-                        },})
+                    })
                         .then(response => {
-
 
                         this.consult = false;
                         // Agregar la respuesta del servidor al chat
@@ -314,8 +313,6 @@
                             sender: 'bot',
                             content: response.data.message,
                             link: '',
-                            activeComponent: response.data.activeComponent ?? false,
-                            component: response.data.component ?? null,
                             timestamp: new Date().toLocaleTimeString('es-ES',format)
                         });
 
