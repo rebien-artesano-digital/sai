@@ -1,4 +1,4 @@
-@section('styles')
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style scoped>
     .floating-container {
@@ -179,9 +179,9 @@
     }
 
 </style>
-@endsection
 
-@section('content')
+
+
 <div id="chat-body">
     <div class="floating-container d-flex justify-content-center align-items-center" :style="containerStyle" v-if="!chatOpen">
       <button class="floating-button" @click="handleButtonClick">
@@ -219,127 +219,124 @@
       </div>
     </div>
 </div>
- <!-- Register Employee modal -->
 
-@endsection
 
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
 
-        const format = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false, timeZone: 'America/Bogota' };
-        // Inicializar la instancia de Vue.js
-        var app = new Vue({
-            el: '#chat-body',
-            data: function() {
-                return {
-                    consult: false,
-                    component: 'ChatBot',
-                    componentId:'ChatBot1',
-                    countPrinciples:false,
-                    principles:[],
-                    messages: [],
-                    imageUser: '/storage/images/intellisai.svg',
-                    imageSai: '/storage/images/sai.png',
-                    containerStyle: {
-                        position: 'fixed',
-                        bottom: '20px',
-                        right: '20px',
-                        zIndex: '9999',
-                        transition: 'bottom 0.3s',
-                    },
-                    chatOpen: false,
-                    inputMessage: '',
-                };
+    const format = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false, timeZone: 'America/Bogota' };
+    // Inicializar la instancia de Vue.js
+    var app = new Vue({
+        el: '#chat-body',
+        data: function() {
+            return {
+                consult: false,
+                component: 'ChatBot',
+                componentId:'ChatBot1',
+                countPrinciples:false,
+                principles:[],
+                messages: [],
+                imageUser: '/storage/images/intellisai.svg',
+                imageSai: '/storage/images/sai.png',
+                containerStyle: {
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px',
+                    zIndex: '9999',
+                    transition: 'bottom 0.3s',
+                },
+                chatOpen: false,
+                inputMessage: '',
+            };
+        },
+        methods: {
+            // Función para agregar un nuevo mensaje al chat
+            addMessage(message) {
+                this.messages.push(message);
+                // Desplazarse al final del chat para mostrar el último mensaje
+                this.$nextTick(() => {
+                    const chatBody = document.querySelector('.chat-messages');
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                });
             },
-            methods: {
-                // Función para agregar un nuevo mensaje al chat
-                addMessage(message) {
-                    this.messages.push(message);
-                    // Desplazarse al final del chat para mostrar el último mensaje
-                    this.$nextTick(() => {
-                        const chatBody = document.querySelector('.chat-messages');
-                        chatBody.scrollTop = chatBody.scrollHeight;
-                    });
-                },
-                handleScroll() {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    this.containerStyle.bottom = scrollTop > 0 ? '20px' : '100px';
-                },
-                handleResize() {
-                    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-                    if (screenWidth < 600) {
-                        this.containerStyle.width = '60px';
-                        this.containerStyle.height = '60px';
-                    } else {
-                        this.containerStyle.width = '80px';
-                        this.containerStyle.height = '80px';
-                    }
-                },
-                handleButtonClick() {
-                    this.chatOpen = !this.chatOpen;
-                },
-                sendMessage() {
-                    const message = this.inputMessage.trim();
-                    if (message !== '') {
-                        this.messages.push({ id: Date.now(), sender: 'user', content: message , activeComponent:false, component: '' });
-                        // Lógica para procesar la respuesta del chatbot
-                        this.inputMessage = '';
+            handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                this.containerStyle.bottom = scrollTop > 0 ? '20px' : '100px';
+            },
+            handleResize() {
+                const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                if (screenWidth < 600) {
+                    this.containerStyle.width = '60px';
+                    this.containerStyle.height = '60px';
+                } else {
+                    this.containerStyle.width = '80px';
+                    this.containerStyle.height = '80px';
+                }
+            },
+            handleButtonClick() {
+                this.chatOpen = !this.chatOpen;
+            },
+            sendMessage() {
+                const message = this.inputMessage.trim();
+                if (message !== '') {
+                    this.messages.push({ id: Date.now(), sender: 'user', content: message , activeComponent:false, component: '' });
+                    // Lógica para procesar la respuesta del chatbot
+                    this.inputMessage = '';
 
-                        this.$nextTick(() => {
+                    this.$nextTick(() => {
+                    const chatBody = document.querySelector('.chatbot-messages');
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                    });
+
+                    this.sendServices(message);
+                }
+            },
+            sendServices(message){
+                this.consult = true;
+                axios.post('/sai', {
+                    message: message,
+                    alarm: true,
+                    component:this.component,
+                    clientId: localStorage.getItem('clientId'),
+                })
+                    .then(response => {
+
+                    this.consult = false;
+                    // Agregar la respuesta del servidor al chat
+                    this.addMessage({
+                        id:1,
+                        sender: 'bot',
+                        content: response.data.message,
+                        link: '',
+                        timestamp: new Date().toLocaleTimeString('es-ES',format)
+                    });
+
+                    this.$nextTick(() => {
                         const chatBody = document.querySelector('.chatbot-messages');
                         chatBody.scrollTop = chatBody.scrollHeight;
-                        });
-
-                        this.sendServices(message);
-                    }
-                },
-                sendServices(message){
-                    this.consult = true;
-                    axios.post('/sai', {
-                        message: message,
-                        alarm: true,
-                        component:this.component,
-                        clientId: localStorage.getItem('clientId'),
+                    });
                     })
-                        .then(response => {
-
-                        this.consult = false;
-                        // Agregar la respuesta del servidor al chat
-                        this.addMessage({
-                            id:1,
-                            sender: 'bot',
-                            content: response.data.message,
-                            link: '',
-                            timestamp: new Date().toLocaleTimeString('es-ES',format)
-                        });
-
-                        this.$nextTick(() => {
-                            const chatBody = document.querySelector('.chatbot-messages');
-                            chatBody.scrollTop = chatBody.scrollHeight;
-                        });
-                        })
-                        .catch(error => {
-                        console.log(error);
-                        });
-                },
-                closeChat() {
-                    this.chatOpen = false;
-                },
+                    .catch(error => {
+                    console.log(error);
+                    });
             },
-            mounted() {
-                window.addEventListener('scroll', this.handleScroll);
-                window.addEventListener('resize', this.handleResize);
-                this.handleResize();
+            closeChat() {
+                this.chatOpen = false;
             },
-            beforeUnmount() {
-                window.removeEventListener('scroll', this.handleScroll);
-                window.removeEventListener('resize', this.handleResize);
-            },
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('resize', this.handleResize);
+            this.handleResize();
+        },
+        beforeUnmount() {
+            window.removeEventListener('scroll', this.handleScroll);
+            window.removeEventListener('resize', this.handleResize);
+        },
 
 
-        });
-    </script>
-@endsection
+    });
+</script>
+
